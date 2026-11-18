@@ -1,0 +1,433 @@
+/* =========================================
+   1. CSS Variables & Reset
+   ========================================= */
+:root {
+  --navy-primary: #26324d;
+  --navy-hover: #354468;
+  --navy-active: #1b2438;
+  --text-body: #474f63;
+  --white: #ffffff;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--navy-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  background-color: #e6e7f5;
+  background-image:
+    radial-gradient(circle at 26% 6%, rgba(248, 240, 198, 0.9) 0%, transparent 42%),
+    radial-gradient(circle at 92% 14%, rgba(169, 161, 189, 0.78) 0%, transparent 48%),
+    radial-gradient(circle at 6% 12%, rgba(193, 197, 224, 0.85) 0%, transparent 45%),
+    radial-gradient(circle at 86% 88%, rgba(246, 234, 178, 0.92) 0%, transparent 48%),
+    radial-gradient(circle at 12% 85%, rgba(198, 203, 232, 0.85) 0%, transparent 50%),
+    radial-gradient(circle at 50% 48%, rgba(238, 239, 250, 0.95) 0%, transparent 65%);
+}
+
+.page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* =========================================
+   2. Decorative Floating Stars (No JS)
+   ========================================= */
+.stars-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  user-select: none;
+  will-change: transform;
+  filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.35));
+}
+
+/* Bintang Putih Kiri Atas */
+.star-1 {
+  top: 21%;
+  left: 9.5%;
+  width: 44px;
+  animation: floatStarA 5.8s ease-in-out infinite;
+  animation-delay: -1.2s;
+}
+
+/* Bintang Kuning Kiri Bawah */
+.star-2 {
+  top: 56%;
+  left: 8%;
+  width: 38px;
+  animation: floatStarB 6.6s ease-in-out infinite;
+  animation-delay: -3.1s;
+}
+
+/* Bintang Kuning Kanan Atas */
+.star-3 {
+  top: 24%;
+  right: 5.5%;
+  width: 44px;
+  animation: floatStarB 6.2s ease-in-out infinite;
+  animation-delay: -0.8s;
+}
+
+/* Bintang Putih Kanan Bawah */
+.star-4 {
+  bottom: 13%;
+  right: 13.5%;
+  width: 44px;
+  animation: floatStarA 5.4s ease-in-out infinite;
+  animation-delay: -2.4s;
+}
+
+@keyframes floatStarA {
+  0%, 100% {
+    transform: translateY(0px) rotate(-12deg) scale(1);
+  }
+  50% {
+    transform: translateY(-16px) rotate(-4deg) scale(1.06);
+  }
+}
+
+@keyframes floatStarB {
+  0%, 100% {
+    transform: translateY(0px) rotate(10deg) scale(1);
+  }
+  50% {
+    transform: translateY(-14px) rotate(18deg) scale(1.05);
+  }
+}
+
+/* =========================================
+   3. Header & Interactive Navigation
+   ========================================= */
+.site-header {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 28px 44px 0;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.brand-logo img {
+  height: 46px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-logo:hover {
+  transform: scale(1.04);
+  opacity: 0.9;
+}
+
+.auth-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.btn-login {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+  text-shadow: 0 1px 6px rgba(38, 50, 77, 0.22);
+  transition: var(--transition-smooth);
+}
+
+.btn-login:hover,
+.btn-login:focus-visible {
+  background-color: rgba(255, 255, 255, 0.24);
+  color: var(--navy-primary);
+  text-shadow: none;
+}
+
+/* Center Menu Row */
+.main-nav {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+}
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: var(--navy-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 6px 2px;
+  transition: var(--transition-smooth);
+}
+
+/* Garis bawah animasi melebar dari tengah saat hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--navy-primary);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.28s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--navy-hover);
+  transform: translateY(-1px);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  width: 100%;
+}
+
+/* =========================================
+   4. Hero Section
+   ========================================= */
+.hero-section {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 36px 24px 80px;
+}
+
+.hero-content {
+  max-width: 680px;
+  margin: 0 auto;
+  animation: fadeInUp 0.85s ease-out both;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 4.8vw, 3.65rem);
+  line-height: 1.13;
+  letter-spacing: -0.015em;
+  color: var(--navy-primary);
+  margin-bottom: 22px;
+}
+
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  color: var(--navy-primary);
+  margin-bottom: 22px;
+}
+
+.hero-description {
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1.3vw, 1.02rem);
+  line-height: 1.65;
+  color: var(--text-body);
+  max-width: 530px;
+  margin: 0 auto 38px;
+}
+
+/* =========================================
+   5. Interactive Pill Buttons
+   ========================================= */
+.hero-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  user-select: none;
+}
+
+.btn-sm {
+  font-size: 0.9rem;
+  padding: 10px 24px;
+}
+
+.btn-lg {
+  font-size: 0.98rem;
+  min-width: 158px;
+  padding: 12px 32px;
+}
+
+/* Tombol Navy: Get Started & Start Here */
+.btn-primary {
+  background-color: var(--navy-primary);
+  color: var(--white);
+  box-shadow: 0 6px 18px rgba(38, 50, 77, 0.16);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: var(--navy-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(38, 50, 77, 0.26);
+}
+
+.btn-primary:active {
+  background-color: var(--navy-active);
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Tombol Putih: Explore */
+.btn-secondary {
+  background-color: var(--white);
+  color: var(--navy-primary);
+  box-shadow: 0 6px 18px rgba(38, 50, 77, 0.08);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background-color: #fafbff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(38, 50, 77, 0.16);
+}
+
+.btn-secondary:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Animasi Masuk Halaman */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   6. Responsive Breakpoints
+   ========================================= */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 20px 24px 0;
+  }
+
+  .main-nav {
+    margin-top: 20px;
+  }
+
+  .nav-list {
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .star-1 {
+    top: 17%;
+    left: 5%;
+    width: 32px;
+  }
+
+  .star-2 {
+    top: 68%;
+    left: 4%;
+    width: 28px;
+  }
+
+  .star-3 {
+    top: 19%;
+    right: 5%;
+    width: 32px;
+  }
+
+  .star-4 {
+    bottom: 8%;
+    right: 7%;
+    width: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-logo img {
+    height: 38px;
+  }
+
+  .auth-actions {
+    gap: 10px;
+  }
+
+  .btn-sm {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+
+  .nav-list {
+    gap: 16px;
+  }
+
+  .nav-link {
+    font-size: 0.88rem;
+  }
+
+  .btn-lg {
+    width: 100%;
+    max-width: 240px;
+  }
+}
