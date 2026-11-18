@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — MindSpace</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="register.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Decorative Floating Stars (Pure CSS) -->
+    <div class="stars-layer" aria-hidden="true">
+      <img src="picture/white-stars.png" alt="" class="star star-1" />
+      <img src="picture/yellow-stars.png" alt="" class="star star-2" />
+      <img src="picture/yellow-stars.png" alt="" class="star star-3" />
+      <img src="picture/yellow-stars.png" alt="" class="star star-4" />
+      <img src="picture/white-stars.png" alt="" class="star star-5" />
+      <img src="picture/white-stars.png" alt="" class="star star-6" />
+    </div>
+
+    <!-- Header Logo -->
+    <header class="site-header">
+      <a href="index.html" class="brand-logo" aria-label="Kembali ke Beranda MindSpace">
+        <img src="picture/logo.png" alt="MindSpace Logo" />
+      </a>
+    </header>
+
+    <!-- Main Register Card -->
+    <main class="register-container">
+      <section class="register-card" aria-labelledby="register-heading">
+        <h1 id="register-heading" class="register-title">Register</h1>
+
+        <form id="register-form" class="register-form" action="dashboard.html" method="get">
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              placeholder="Masukkan nama lengkap"
+              required
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="nama@email.com"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="form-input"
+              placeholder="08xxxxxxxxxx"
+              required
+              autocomplete="tel"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
+              placeholder="••••••••"
+              minlength="6"
+              required
+              autocomplete="new-password"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password" class="form-label">Confirm Password</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm_password"
+              class="form-input"
+              placeholder="••••••••"
+              minlength="6"
+              required
+              autocomplete="new-password"
+            />
+          </div>
+
+          <button type="submit" id="btn-register" class="btn-register">
+            Register
+          </button>
+        </form>
+
+        <p class="auth-switch">
+          Sudah punya akun?
+          <a href="login.html" class="auth-link">Log In</a>
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Hook JS jika temanmu ingin menambahkan validasi password / autentikasi -->
+  <!-- <script src="register.js"></script> -->
+</body>
+</html>

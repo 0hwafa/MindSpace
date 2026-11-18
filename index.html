@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MindSpace — A Little Space to Understand Yourself</title>
 
-  <!-- Google Fonts: Playfair Display (Serif) & Plus Jakarta Sans (Sans-serif) -->
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -17,40 +17,35 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- Decorative Floating Stars (Pure CSS Animation) -->
+    <!-- Decorative Floating Stars Layer (Pure CSS) -->
     <div class="stars-layer" aria-hidden="true">
-      <img
-        src="picture/white-stars.png"
-        alt=""
-        class="star star-1"
-      />
-      <img
-        src="picture/yellow-stars.png"
-        alt=""
-        class="star star-2"
-      />
-      <img
-        src="picture/yellow-stars.png"
-        alt=""
-        class="star star-3"
-      />
-      <img
-        src="picture/white-stars.png"
-        alt=""
-        class="star star-4"
-      />
+      <!-- Hero Stars -->
+      <img src="picture/white-stars.png" alt="" class="star star-1" />
+      <img src="picture/yellow-stars.png" alt="" class="star star-2" />
+      <img src="picture/yellow-stars.png" alt="" class="star star-3" />
+      <img src="picture/white-stars.png" alt="" class="star star-4" />
+
+      <!-- Pick A Card & Nebula Stars -->
+      <img src="picture/yellow-stars.png" alt="" class="star star-5" />
+      <img src="picture/white-stars.png" alt="" class="star star-6" />
+      <img src="picture/white-stars.png" alt="" class="star star-7" />
+
+      <!-- Explore & Discover Star -->
+      <img src="picture/white-stars.png" alt="" class="star star-8" />
     </div>
 
-    <!-- Header & Navigation -->
+    <!-- =========================================
+         HEADER & NAVIGATION
+         ========================================= -->
     <header class="site-header">
       <div class="header-top">
-        <a href="#" class="brand-logo" aria-label="MindSpace Home">
+        <a href="index.html" class="brand-logo" aria-label="MindSpace Home">
           <img src="picture/logo.png" alt="MindSpace Logo" />
         </a>
 
         <div class="auth-actions">
-          <a href="#login" id="btn-login" class="btn-login">Log In</a>
-          <a href="#get-started" id="btn-get-started" class="btn btn-primary btn-sm">
+          <a href="login.html" id="btn-login" class="btn-login">Log In</a>
+          <a href="register.html" id="btn-get-started" class="btn btn-primary btn-sm">
             Get Started
           </a>
         </div>
@@ -58,42 +53,207 @@
 
       <nav class="main-nav" aria-label="Navigasi Utama">
         <ul class="nav-list">
-          <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
-          <li><a href="#features" class="nav-link">Features</a></li>
-          <li><a href="#articles" class="nav-link">Articles</a></li>
+          <li><a href="#pick-a-card" class="nav-link">How It Works</a></li>
+          <li><a href="#nebula-companion" class="nav-link">Features</a></li>
+          <li><a href="#explore-discover" class="nav-link">Articles</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
         </ul>
       </nav>
     </header>
 
-    <!-- Main Hero Section -->
-    <main class="hero-section">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          Your mind deserves<br />
-          a place that feels safe
-        </h1>
+    <main>
+      <!-- =========================================
+           SECTION 1: HERO SECTION
+           ========================================= -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Your mind deserves<br />
+            a place that feels safe
+          </h1>
 
-        <p class="hero-subtitle">
-          A little space to understand yourself.
-        </p>
+          <p class="hero-subtitle">
+            A little space to understand yourself.
+          </p>
 
-        <p class="hero-description">
-          Tidak semua hari terasa sama. Kenali perasaanmu, pahami dirimu,
-          dan temukan ruang aman untuk bercerita bersama MindSpace.
-        </p>
+          <p class="hero-description">
+            Tidak semua hari terasa sama. Kenali perasaanmu, pahami dirimu,
+            dan temukan ruang aman untuk bercerita bersama MindSpace.
+          </p>
 
-        <div class="hero-cta">
-          <a href="#start" id="btn-start-here" class="btn btn-primary btn-lg">
-            Start Here
-          </a>
-          <a href="#explore" id="btn-explore" class="btn btn-secondary btn-lg">
-            Explore
-          </a>
+          <div class="hero-cta">
+            <a href="register.html" id="btn-start-here" class="btn btn-primary btn-lg">
+              Start Here
+            </a>
+            <a href="#explore-discover" id="btn-explore" class="btn btn-secondary btn-lg">
+              Explore
+            </a>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- =========================================
+           SECTION 2: PICK A CARD & NEBULA'S HERE
+           ========================================= -->
+      <section id="pick-a-card" class="companion-section">
+        <div class="container">
+          <!-- Row 1: Card Deck + Pick A Card Text -->
+          <div class="pick-card-row">
+            <!-- Interactive Pure CSS Card Stack (Klik atau Hover) -->
+            <div class="card-deck-wrapper">
+              <input
+                type="checkbox"
+                id="toggle-card-flip"
+                class="card-toggle-input"
+                aria-label="Balik kartu pengingat hari ini"
+              />
+              <label for="toggle-card-flip" class="card-deck" title="Klik untuk membuka kartu pesanmu">
+                <span class="deck-card deck-back-2" aria-hidden="true"></span>
+                <span class="deck-card deck-back-1" aria-hidden="true"></span>
+
+                <span class="deck-card deck-front">
+                  <!-- Sisi Depan: Simbol Bintang Mengambang -->
+                  <span class="card-face card-front-face">
+                    <svg
+                      class="floating-star-symbol"
+                      viewBox="0 0 120 120"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M60 12C63.2 12 65.8 29.5 70.5 38.8C75.2 48.1 93.5 47.2 95.8 50.8C98.1 54.4 83.2 65.6 81.2 75.5C79.2 85.4 88.5 101.8 85.2 104.5C81.9 107.2 67.8 95.8 60 95.8C52.2 95.8 38.1 107.2 34.8 104.5C31.5 101.8 40.8 85.4 38.8 75.5C36.8 65.6 21.9 54.4 24.2 50.8C26.5 47.2 44.8 48.1 49.5 38.8C54.2 29.5 56.8 12 60 12Z"
+                        stroke="#26324d"
+                        stroke-width="2.4"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span class="card-tap-hint">Tap to reveal</span>
+                  </span>
+
+                  <!-- Sisi Belakang: Pesan Pengingat Harian (Pure CSS Flip) -->
+                  <span class="card-face card-back-face">
+                    <span class="card-quote-tag">Daily Reminder</span>
+                    <p class="card-quote-text">
+                      “Pelan-pelan saja. Kamu tidak harus menyelesaikan semuanya hari ini untuk tetap berarti.”
+                    </p>
+                    <span class="card-tap-hint">Tap to close</span>
+                  </span>
+                </span>
+              </label>
+            </div>
+
+            <!-- Pick A Card Description -->
+            <div class="pick-card-info">
+              <h2 class="section-heading">Pick A Card!</h2>
+              <p class="section-text">
+                Sometimes, all you need is a little reminder. Pick a card and see what the universe has for you.
+                Take a little moment for yourself. Pick a card and discover a reminder made just for you.
+              </p>
+            </div>
+          </div>
+
+          <!-- Row 2: Nebula's Here + Floating Mascot -->
+          <div id="nebula-companion" class="nebula-row">
+            <div class="nebula-info">
+              <h2 class="section-heading">Nebula's here!</h2>
+              <p class="section-text">
+                Hi, I'm Nebula! Your little companion here at MindSpace.
+                I'll be with you as you explore your feelings, discover yourself, and find the support you need.
+              </p>
+            </div>
+
+            <div class="nebula-mascot-box">
+              <div class="nebula-speech-bubble" aria-hidden="true">
+                Hi! Aku Nebula ✨
+              </div>
+              <img
+                src="picture/nebula.png"
+                alt="Maskot Nebula MindSpace"
+                class="nebula-mascot"
+              />
+            </div>
+          </div>
+
+          <!-- Horizontal Divider -->
+          <hr class="section-divider" />
+        </div>
+      </section>
+
+      <!-- =========================================
+           SECTION 3: EXPLORE & DISCOVER (ARTICLES)
+           ========================================= -->
+      <section id="explore-discover" class="articles-section">
+        <div class="container">
+          <div class="articles-header">
+            <h2 class="section-heading">Explore &amp; Discover</h2>
+            <p class="section-text">
+              A little knowledge can make a big difference. Explore our latest articles and
+              discover new ways to understand yourself and your mental well-being.
+            </p>
+          </div>
+
+          <div class="articles-grid">
+            <!-- Article Card 01 -->
+            <article class="article-card">
+              <a href="#article-01" class="article-card-link">
+                <div class="article-thumb" aria-hidden="true"></div>
+                <div class="article-body">
+                  <h3 class="article-title">
+                    01. Why Do I Feel Lost Even When Everything Seems Fine?
+                  </h3>
+                  <p class="article-excerpt">
+                    Sometimes, feeling lost isn't about having a bad life. It's about not fully understanding what you need.
+                  </p>
+                  <div class="article-meta">
+                    <span>5 min read &middot; 18 Nov 2026</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Article Card 02 -->
+            <article class="article-card">
+              <a href="#article-02" class="article-card-link">
+                <div class="article-thumb" aria-hidden="true"></div>
+                <div class="article-body">
+                  <h3 class="article-title">
+                    02. It's Not Laziness, Maybe You're Just Burned Out
+                  </h3>
+                  <p class="article-excerpt">
+                    Understanding the difference between losing motivation, feeling exhausted, and experiencing academic burnout.
+                  </p>
+                  <div class="article-meta">
+                    <span>5 min read &middot; 18 Nov 2026</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Article Card 03 -->
+            <article class="article-card">
+              <a href="#article-03" class="article-card-link">
+                <div class="article-thumb" aria-hidden="true"></div>
+                <div class="article-body">
+                  <h3 class="article-title">
+                    03. You Don't Have to Have It All Figured Out
+                  </h3>
+                  <p class="article-excerpt">
+                    A gentle reminder that growing takes time, and it's okay to take life one step at a time.
+                  </p>
+                  <div class="article-meta">
+                    <span>5 min read &middot; 18 Nov 2026</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
 
+  <!-- File JS terpisah jika ingin ditambahkan temanmu nanti -->
+  <!-- <script src="script.js"></script> -->
 </body>
 </html>
