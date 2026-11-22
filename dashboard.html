@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — MindSpace</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <!-- SVG Icon Sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 24 24">
+      <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path>
+    </symbol>
+    <symbol id="i-mood" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M8 14c1 1.5 2.5 2.2 4 2.2s3-.7 4-2.2M9 9.5h.01M15 9.5h.01"></path>
+    </symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24">
+      <rect x="4" y="5" width="16" height="15" rx="3"></rect>
+      <path d="M8 3v4M16 3v4M4 10h16"></path>
+    </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4"></circle>
+      <path d="M4 20c1-4 4-6 8-6s7 2 8 6"></path>
+    </symbol>
+    <symbol id="i-article" viewBox="0 0 24 24">
+      <path d="M6 4h9l3 3v13H6z"></path>
+      <path d="M9 11h6M9 15h6"></path>
+    </symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24">
+      <path d="M9 4h6v5l4 9a2 2 0 0 1-2 3H7a2 2 0 0 1-2-3l4-9z"></path>
+    </symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24">
+      <path d="M10 4H6v16h4M14 8l4 4-4 4M18 12H9"></path>
+    </symbol>
+  </svg>
+
+  <div class="app-shell">
+    <!-- Decorative Floating Stars (Di belakang lapisan kaca) -->
+    <div class="stars-layer" aria-hidden="true">
+      <img src="picture/white-stars.png" alt="" class="star star-1" />
+      <img src="picture/yellow-stars.png" alt="" class="star star-2" />
+      <img src="picture/yellow-stars.png" alt="" class="star star-3" />
+      <img src="picture/white-stars.png" alt="" class="star star-4" />
+    </div>
+
+    <!-- Glass Sidebar -->
+    <aside class="sidebar">
+      <a href="dashboard.html" class="brand-logo" aria-label="MindSpace Dashboard">
+        <img src="picture/logo.png" alt="MindSpace Logo" />
+      </a>
+
+      <nav class="nav" aria-label="Menu Utama">
+        <a href="dashboard.html" class="nav-item active">
+          <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-home" /></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="mood-tracking.html" class="nav-item">
+          <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-mood" /></svg>
+          <span>Mood Tracking</span>
+        </a>
+        <a href="reservasi.html" class="nav-item">
+          <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-calendar" /></svg>
+          <span>Reservasi</span>
+        </a>
+        <a href="#profile" class="nav-item">
+          <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-user" /></svg>
+          <span>Profile</span>
+        </a>
+        <a href="index.html#explore-discover" class="nav-item">
+          <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-article" /></svg>
+          <span>Artikel</span>
+        </a>
+        <a href="#layanan-tes" class="nav-item">
+          <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-flask" /></svg>
+          <span>Layanan Tes</span>
+        </a>
+      </nav>
+
+      <a href="index.html" id="btn-logout" class="nav-item logout">
+        <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-logout" /></svg>
+        <span>Logout</span>
+      </a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="page-header">
+        <span class="chip">Dashboard</span>
+        <h1 class="page-title" id="user-greeting">Halo, [NAMA PENGGUNA]</h1>
+        <p class="page-subtitle">Mau mulai dari mana hari ini?</p>
+      </header>
+
+      <!-- Check-in Banner Card -->
+      <section class="glass-card checkin-card" aria-label="Check-in harian">
+        <div>
+          <p class="label-caps">Check-in hari ini</p>
+          <h2 class="card-heading-lg">Bagaimana perasaanmu?</h2>
+        </div>
+        <a href="mood-tracking.html" class="btn-primary">Catat mood</a>
+      </section>
+
+      <!-- Feature Navigation Cards -->
+      <section class="features-grid" aria-label="Fitur MindSpace">
+        <a href="mood-tracking.html" class="glass-card feature-card">
+          <div class="icon-badge">
+            <svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-mood" /></svg>
+          </div>
+          <h3 class="feature-title">Mood Tracking</h3>
+          <p class="feature-desc">Catat perasaanmu hari ini.</p>
+        </a>
+
+        <a href="reservasi.html" class="glass-card feature-card">
+          <div class="icon-badge">
+            <svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-calendar" /></svg>
+          </div>
+          <h3 class="feature-title">Reservasi</h3>
+          <p class="feature-desc">Tes skrining awal, lalu pilih psikolog.</p>
+        </a>
+
+        <a href="#profile" class="glass-card feature-card">
+          <div class="icon-badge">
+            <svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-user" /></svg>
+          </div>
+          <h3 class="feature-title">Profile</h3>
+          <p class="feature-desc">Riwayat mood tracking dan data dirimu.</p>
+        </a>
+
+        <a href="artikel.html" class="glass-card feature-card">
+          <div class="icon-badge">
+            <svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-article" /></svg>
+          </div>
+          <h3 class="feature-title">Artikel</h3>
+          <p class="feature-desc">Bacaan seputar kesehatan mental.</p>
+        </a>
+
+        <a href="#layanan-tes" class="glass-card feature-card">
+          <div class="icon-badge">
+            <svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-flask" /></svg>
+          </div>
+          <h3 class="feature-title">Layanan Tes</h3>
+          <p class="feature-desc">Tes MBTI, kecerdasan, dan tingkat stres.</p>
+        </a>
+      </section>
+    </main>
+  </div>
+
+  <!-- <script src="dashboard.js"></script> -->
+</body>
+</html>

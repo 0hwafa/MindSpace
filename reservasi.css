@@ -1,0 +1,530 @@
+/* =========================================
+   1. Variables & Reset
+   ========================================= */
+:root {
+  --navy-primary: #26324d;
+  --navy-hover: #354468;
+  --text-muted: #565e73;
+  --mauve-accent: #8e7c9b;
+  --yellow-chip: #f7e58a;
+  --white: #ffffff;
+
+  --glass-bg: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.74) 0%,
+    rgba(246, 243, 252, 0.58) 100%
+  );
+  --glass-sidebar: rgba(255, 255, 255, 0.48);
+  --glass-border: rgba(255, 255, 255, 0.84);
+  --glass-shadow: 0 14px 34px rgba(38, 50, 77, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--navy-primary);
+  min-height: 100vh;
+  background-color: #e6e5f3;
+  background-image:
+    radial-gradient(circle at 12% 10%, rgba(226, 214, 242, 0.95) 0%, transparent 45%),
+    radial-gradient(circle at 86% 14%, rgba(210, 214, 238, 0.85) 0%, transparent 45%),
+    radial-gradient(circle at 88% 88%, rgba(250, 238, 184, 0.95) 0%, transparent 50%),
+    radial-gradient(circle at 22% 85%, rgba(235, 226, 246, 0.9) 0%, transparent 48%),
+    radial-gradient(circle at 50% 45%, rgba(244, 241, 250, 0.92) 0%, transparent 70%);
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   2. Decorative Floating Stars
+   ========================================= */
+.stars-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  opacity: 0.85;
+}
+
+.star-1 {
+  top: 7%;
+  right: 8%;
+  width: 38px;
+  animation: floatA 6s ease-in-out infinite;
+}
+
+.star-2 {
+  top: 48%;
+  right: 4%;
+  width: 34px;
+  animation: floatB 6.6s ease-in-out infinite -1.4s;
+}
+
+.star-3 {
+  bottom: 8%;
+  left: 23%;
+  width: 36px;
+  animation: floatA 5.8s ease-in-out infinite -2.1s;
+}
+
+@keyframes floatA {
+  0%, 100% { transform: translateY(0) rotate(-10deg); }
+  50% { transform: translateY(-14px) rotate(-2deg); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translateY(0) rotate(8deg); }
+  50% { transform: translateY(-12px) rotate(16deg); }
+}
+
+/* =========================================
+   3. Frosted Glass Sidebar
+   ========================================= */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 260px;
+  flex-shrink: 0;
+  z-index: 10;
+  padding: 34px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+
+  background: var(--glass-sidebar);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid var(--glass-border);
+  box-shadow: 6px 0 28px rgba(38, 50, 77, 0.04);
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 8px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.brand-logo img {
+  height: 46px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-logo:hover {
+  transform: scale(1.03);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: 15px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: var(--navy-primary);
+  transform: translateX(4px);
+}
+
+.nav-item.active {
+  background: var(--navy-primary);
+  color: var(--white);
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(38, 50, 77, 0.22);
+}
+
+.nav-item.active:hover {
+  transform: none;
+}
+
+.nav-item.logout:hover {
+  background: rgba(235, 110, 110, 0.14);
+  color: #9e3545;
+  border-color: rgba(235, 110, 110, 0.3);
+}
+
+.icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   4. Main Content & Glass Cards
+   ========================================= */
+.main-content {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  max-width: 1120px;
+  padding: 46px 52px 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+.chip {
+  display: inline-block;
+  padding: 6px 15px;
+  border-radius: 999px;
+  background: var(--yellow-chip);
+  color: var(--navy-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(247, 229, 138, 0.45);
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(2rem, 3.6vw, 2.55rem);
+  line-height: 1.15;
+  margin-top: 14px;
+}
+
+.page-subtitle {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  margin-top: 8px;
+}
+
+.label-caps {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 26px 28px;
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition);
+}
+
+/* =========================================
+   5. Step Progress & Screening Pills
+   ========================================= */
+.progress-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.progress {
+  display: flex;
+  gap: 10px;
+}
+
+.progress span {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+.progress span.done {
+  background: var(--navy-primary);
+  border-color: var(--navy-primary);
+}
+
+.question-card:hover {
+  box-shadow: 0 18px 38px rgba(38, 50, 77, 0.11), inset 0 1px 0 var(--white);
+}
+
+.question-text {
+  font-weight: 600;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.options {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.pill-option {
+  cursor: pointer;
+}
+
+.pill-option input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pill {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  color: var(--navy-primary);
+  font-size: 0.88rem;
+  font-weight: 500;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.pill:hover {
+  background: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(38, 50, 77, 0.09);
+}
+
+.pill-option input[type='radio']:checked + .pill {
+  background: var(--navy-primary);
+  border-color: var(--navy-primary);
+  color: var(--white);
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(38, 50, 77, 0.22);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: var(--navy-primary);
+  color: var(--white);
+  font-size: 0.94rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(38, 50, 77, 0.2);
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  background: var(--navy-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(38, 50, 77, 0.28);
+}
+
+/* =========================================
+   6. Step 2: Psychologist Selection Cards
+   ========================================= */
+.step-two-section {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.section-heading {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(1.65rem, 2.8vw, 2.05rem);
+  margin-top: 6px;
+}
+
+.psy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.psy-select-wrap {
+  display: block;
+  cursor: pointer;
+}
+
+.psy-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.psy-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+}
+
+.psy-card:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(248, 245, 254, 0.74) 100%
+  );
+  box-shadow: 0 18px 38px rgba(38, 50, 77, 0.13);
+}
+
+.avatar-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--yellow-chip);
+  color: var(--navy-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 14px rgba(247, 229, 138, 0.45);
+  transition: var(--transition);
+}
+
+.psy-card:hover .avatar-circle {
+  transform: scale(1.06);
+}
+
+.psy-info {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.psy-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.psy-spec {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.btn-select-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 26px;
+  border-radius: 999px;
+  background: var(--navy-primary);
+  color: var(--white);
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.label-chosen {
+  display: none;
+}
+
+/* Selected Psychologist State (Pure CSS) */
+.psy-radio:checked + .psy-card {
+  border-color: var(--navy-primary);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.94) 0%,
+    rgba(244, 239, 253, 0.88) 100%
+  );
+  box-shadow: 0 18px 40px rgba(38, 50, 77, 0.16);
+}
+
+.psy-radio:checked + .psy-card .btn-select-pill {
+  background: var(--mauve-accent);
+}
+
+.psy-radio:checked + .psy-card .label-default {
+  display: none;
+}
+
+.psy-radio:checked + .psy-card .label-chosen {
+  display: inline;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   7. Responsive
+   ========================================= */
+@media (max-width: 900px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px 24px;
+    gap: 18px;
+    border-right: none;
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nav-item {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 0.88rem;
+  }
+
+  .main-content {
+    padding: 32px 24px 48px;
+  }
+}

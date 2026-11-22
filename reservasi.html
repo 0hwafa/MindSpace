@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservasi — MindSpace</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="reservasi.css" />
+</head>
+<body>
+  <!-- SVG Icon Sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 24 24">
+      <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path>
+    </symbol>
+    <symbol id="i-mood" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M8 14c1 1.5 2.5 2.2 4 2.2s3-.7 4-2.2M9 9.5h.01M15 9.5h.01"></path>
+    </symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24">
+      <rect x="4" y="5" width="16" height="15" rx="3"></rect>
+      <path d="M8 3v4M16 3v4M4 10h16"></path>
+    </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4"></circle>
+      <path d="M4 20c1-4 4-6 8-6s7 2 8 6"></path>
+    </symbol>
+    <symbol id="i-article" viewBox="0 0 24 24">
+      <path d="M6 4h9l3 3v13H6z"></path>
+      <path d="M9 11h6M9 15h6"></path>
+    </symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24">
+      <path d="M9 4h6v5l4 9a2 2 0 0 1-2 3H7a2 2 0 0 1-2-3l4-9z"></path>
+    </symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24">
+      <path d="M10 4H6v16h4M14 8l4 4-4 4M18 12H9"></path>
+    </symbol>
+  </svg>
+
+  <div class="app-shell">
+    <!-- Decorative Floating Stars -->
+    <div class="stars-layer" aria-hidden="true">
+      <img src="picture/white-stars.png" alt="" class="star star-1" />
+      <img src="picture/yellow-stars.png" alt="" class="star star-2" />
+      <img src="picture/white-stars.png" alt="" class="star star-3" />
+    </div>
+
+    <!-- Glass Sidebar -->
+    <aside class="sidebar">
+      <a href="dashboard.html" class="brand-logo" aria-label="MindSpace Dashboard">
+        <img src="picture/logo.png" alt="MindSpace Logo" />
+      </a>
+
+      <nav class="nav" aria-label="Menu Utama">
+        <a href="dashboard.html" class="nav-item">
+          <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-home" /></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="mood-tracking.html" class="nav-item">
+          <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-mood" /></svg>
+          <span>Mood Tracking</span>
+        </a>
+        <a href="reservasi.html" class="nav-item active">
+          <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-calendar" /></svg>
+          <span>Reservasi</span>
+        </a>
+        <a href="#profile" class="nav-item">
+          <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-user" /></svg>
+          <span>Profile</span>
+        </a>
+        <a href="index.html#explore-discover" class="nav-item">
+          <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-article" /></svg>
+          <span>Artikel</span>
+        </a>
+        <a href="#layanan-tes" class="nav-item">
+          <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-flask" /></svg>
+          <span>Layanan Tes</span>
+        </a>
+      </nav>
+
+      <a href="index.html" id="btn-logout" class="nav-item logout">
+        <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-logout" /></svg>
+        <span>Logout</span>
+      </a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="page-header">
+        <span class="chip">Reservasi</span>
+        <h1 class="page-title">Mulai dengan tes skrining awal</h1>
+        <p class="page-subtitle">Jawab beberapa pertanyaan singkat sebelum memilih psikolog.</p>
+      </header>
+
+      <!-- Progress Indicator -->
+      <div class="progress-wrap">
+        <div class="progress" aria-hidden="true">
+          <span class="done"></span>
+          <span></span>
+        </div>
+        <p class="label-caps">Langkah 1 dari 2 &middot; Skrining</p>
+      </div>
+
+      <!-- Pertanyaan Skrining 1 -->
+      <section class="glass-card question-card">
+        <p class="question-text">1. Dalam 2 minggu terakhir, seberapa sering kamu merasa cemas?</p>
+        <div class="options" role="radiogroup" aria-label="Pertanyaan 1">
+          <label class="pill-option">
+            <input type="radio" name="q1" value="0" />
+            <span class="pill">Tidak pernah</span>
+          </label>
+          <label class="pill-option">
+            <input type="radio" name="q1" value="1" checked />
+            <span class="pill">Kadang</span>
+          </label>
+          <label class="pill-option">
+            <input type="radio" name="q1" value="2" />
+            <span class="pill">Sering</span>
+          </label>
+          <label class="pill-option">
+            <input type="radio" name="q1" value="3" />
+            <span class="pill">Hampir setiap hari</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Pertanyaan Skrining 2 -->
+      <section class="glass-card question-card">
+        <p class="question-text">2. Seberapa sering kamu sulit tidur atau tidur berlebihan?</p>
+        <div class="options" role="radiogroup" aria-label="Pertanyaan 2">
+          <label class="pill-option">
+            <input type="radio" name="q2" value="0" />
+            <span class="pill">Tidak pernah</span>
+          </label>
+          <label class="pill-option">
+            <input type="radio" name="q2" value="1" />
+            <span class="pill">Kadang</span>
+          </label>
+          <label class="pill-option">
+            <input type="radio" name="q2" value="2" />
+            <span class="pill">Sering</span>
+          </label>
+          <label class="pill-option">
+            <input type="radio" name="q2" value="3" />
+            <span class="pill">Hampir setiap hari</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Pertanyaan Skrining 3 -->
+      <section class="glass-card question-card">
+        <p class="question-text">3. Seberapa sering kamu kehilangan minat pada hal yang biasa kamu sukai?</p>
+        <div class="options" role="radiogroup" aria-label="Pertanyaan 3">
+          <label class="pill-option">
+            <input type="radio" name="q3" value="0" />
+            <span class="pill">Tidak pernah</span>
+          </label>
+          <label class="pill-option">
+            <input type="radio" name="q3" value="1" />
+            <span class="pill">Kadang</span>
+          </label>
+          <label class="pill-option">
+            <input type="radio" name="q3" value="2" />
+            <span class="pill">Sering</span>
+          </label>
+          <label class="pill-option">
+            <input type="radio" name="q3" value="3" />
+            <span class="pill">Hampir setiap hari</span>
+          </label>
+        </div>
+      </section>
+
+      <div>
+        <a href="#langkah-2" class="btn-primary">Lanjut pilih psikolog</a>
+      </div>
+
+      <!-- Langkah 2: Pilih Psikolog -->
+      <section id="langkah-2" class="step-two-section" aria-labelledby="heading-psikolog">
+        <div class="step-two-header">
+          <p class="label-caps">Langkah 2 dari 2</p>
+          <h2 id="heading-psikolog" class="section-heading">Pilih psikolog</h2>
+        </div>
+
+        <div class="psy-list">
+          <!-- Psikolog 1 -->
+          <label class="psy-select-wrap">
+            <input type="radio" name="selected_psychologist" value="psikolog-1" class="psy-radio" />
+            <span class="glass-card psy-card">
+              <span class="avatar-circle" aria-hidden="true">
+                <svg class="icon" width="28" height="28"><use href="#i-user" /></svg>
+              </span>
+              <span class="psy-info">
+                <strong class="psy-name">[NAMA PSIKOLOG]</strong>
+                <span class="psy-spec">Spesialisasi: kecemasan dan stres</span>
+              </span>
+              <span class="btn-select-pill">
+                <span class="label-default">Pilih</span>
+                <span class="label-chosen">Dipilih &check;</span>
+              </span>
+            </span>
+          </label>
+
+          <!-- Psikolog 2 -->
+          <label class="psy-select-wrap">
+            <input type="radio" name="selected_psychologist" value="psikolog-2" class="psy-radio" />
+            <span class="glass-card psy-card">
+              <span class="avatar-circle" aria-hidden="true">
+                <svg class="icon" width="28" height="28"><use href="#i-user" /></svg>
+              </span>
+              <span class="psy-info">
+                <strong class="psy-name">[NAMA PSIKOLOG]</strong>
+                <span class="psy-spec">Spesialisasi: remaja dan dewasa muda</span>
+              </span>
+              <span class="btn-select-pill">
+                <span class="label-default">Pilih</span>
+                <span class="label-chosen">Dipilih &check;</span>
+              </span>
+            </span>
+          </label>
+
+          <!-- Psikolog 3 -->
+          <label class="psy-select-wrap">
+            <input type="radio" name="selected_psychologist" value="psikolog-3" class="psy-radio" />
+            <span class="glass-card psy-card">
+              <span class="avatar-circle" aria-hidden="true">
+                <svg class="icon" width="28" height="28"><use href="#i-user" /></svg>
+              </span>
+              <span class="psy-info">
+                <strong class="psy-name">[NAMA PSIKOLOG]</strong>
+                <span class="psy-spec">Spesialisasi: hubungan dan keluarga</span>
+              </span>
+              <span class="btn-select-pill">
+                <span class="label-default">Pilih</span>
+                <span class="label-chosen">Dipilih &check;</span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- <script src="reservasi.js"></script> -->
+</body>
+</html>

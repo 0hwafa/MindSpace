@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — MindSpace</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Decorative Floating Stars (Pure CSS) -->
+    <div class="stars-layer" aria-hidden="true">
+      <img src="picture/white-stars.png" alt="" class="star star-1" />
+      <img src="picture/yellow-stars.png" alt="" class="star star-2" />
+      <img src="picture/yellow-stars.png" alt="" class="star star-3" />
+      <img src="picture/yellow-stars.png" alt="" class="star star-4" />
+      <img src="picture/white-stars.png" alt="" class="star star-5" />
+      <img src="picture/white-stars.png" alt="" class="star star-6" />
+    </div>
+
+    <!-- Header Logo -->
+    <header class="site-header">
+      <a href="index.html" class="brand-logo" aria-label="Kembali ke Beranda MindSpace">
+        <img src="picture/logo.png" alt="MindSpace Logo" />
+      </a>
+    </header>
+
+    <!-- Main Login Card -->
+    <main class="login-container">
+      <section class="login-card" aria-labelledby="login-heading">
+        <h1 id="login-heading" class="login-title">Login</h1>
+
+        <form id="login-form" class="login-form" action="dashboard.html" method="get">
+          <div class="form-group">
+            <label for="username" class="form-label">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form-input"
+              placeholder="Masukkan username"
+              required
+              autocomplete="username"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="nama@email.com"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
+              placeholder="••••••••"
+              minlength="6"
+              required
+              autocomplete="current-password"
+            />
+          </div>
+
+          <button type="submit" id="btn-login" class="btn-login">
+            Log In
+          </button>
+        </form>
+
+        <p class="auth-switch">
+          Belum punya akun?
+          <a href="register.html" class="auth-link">Register</a>
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Hook JS autentikasi -->
+  <!-- <script src="login.js"></script> -->
+</body>
+</html>
